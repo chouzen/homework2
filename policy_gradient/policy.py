@@ -27,6 +27,16 @@ class CategoricalPolicy(object):
         Sample solution is about 2~4 lines.
         """
         # YOUR CODE HERE >>>>>>
+        W1 = tf.Variable(tf.truncated_normal(shape=[in_dim, hidden_dim], stddev=0.1))
+        L1 = tf.tanh(tf.matmul(self._observations, W1))
+        W2 = tf.Variable(tf.truncated_normal(shape=[hidden_dim, out_dim], stddev=0.1))
+        L2 = tf.nn.softmax(tf.matmul(L1, W2))
+        probs = L2
+        # b1 = tf.Variable(tf.zeros([hidden_dim]))
+        # L1 = tf.tanh(tf.matmul(self._observations, W1) + b1)
+        # b2 = tf.Variable(tf.zeros([out_dim]))
+        # L2 = tf.nn.softmax(tf.matmul(L1, W2) + b2)
+        
         # probs = ???
         # <<<<<<<<
 
@@ -70,6 +80,7 @@ class CategoricalPolicy(object):
         """
         # YOUR CODE HERE >>>>>>
         # surr_loss = ???
+        surr_loss = -1 * tf.reduce_sum(tf.mul(log_prob, self._advantages))
         # <<<<<<<<
 
         grads_and_vars = self._opt.compute_gradients(surr_loss)
