@@ -150,6 +150,7 @@ class PolicyOptimizer(object):
             # YOUR CODE HERE >>>>>>
             # a = ???
             a = r-b
+            # a = [xx-b for xx in r]
             # <<<<<<<<
  
             p["returns"] = r
@@ -191,7 +192,8 @@ n_iter = 200
 n_episode = 100
 path_length = 200
 discount_rate = 0.99
-baseline = LinearFeatureBaseline(env.spec)
+baseline = None
+# baseline = LinearFeatureBaseline(env.spec)
  
 po = PolicyOptimizer(env, policy, baseline, n_iter, n_episode, path_length,
                      discount_rate)
