@@ -23,6 +23,6 @@ def discount_cumsum(x, discount_rate):
     # YOUR CODE HERE >>>>>>
   order = discount_rate**np.arange(len(x)+1)
   cumsum = [np.sum(x[ii:] * order[:-ii-1]) for ii,xx in enumerate(x)]
-  return cumsum
+  return np.array(cumsum)
     # return ???
     # <<<<<<<<
