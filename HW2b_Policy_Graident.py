@@ -23,6 +23,7 @@ tf.set_random_seed(0)
 # To visualize CartPole-v0, please see https://gym.openai.com/envs/CartPole-v0
  
 env = gym.make('CartPole-v0')
+env2 = gym.make('CartPole-v0')
  
  
 # ## Problem 1: construct a neural network to represent policy
